@@ -1,0 +1,502 @@
+[
+  {
+    "name": "test merchandise1",
+    "description": "Best product in its category",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 40.49,
+    "stock": 10,
+    "createdAt": "2024-05-11T12:08:02",
+    "updatedAt": "2024-11-13T19:35:56",
+    "createdBy": 4
+  },
+  {
+    "name": "test commodity2",
+    "description": "High quality and reliable product",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 38.82,
+    "stock": 18,
+    "createdAt": "2024-07-23T13:43:39",
+    "updatedAt": "2024-10-06T22:37:09",
+    "createdBy": 2
+  },
+  {
+    "name": "test product3",
+    "description": "Best product in its category",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 48.25,
+    "stock": 20,
+    "createdAt": "2024-06-15T05:43:31",
+    "updatedAt": "2024-10-23T10:31:36",
+    "createdBy": 1
+  },
+  {
+    "name": "test product4",
+    "description": "This is an awesome product description",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 33.42,
+    "stock": 3,
+    "createdAt": "2024-04-29T20:33:34",
+    "updatedAt": "2024-10-13T08:34:44",
+    "createdBy": 2
+  },
+  {
+    "name": "test commodity5",
+    "description": "High quality and reliable product",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 28.84,
+    "stock": 14,
+    "createdAt": "2024-02-02T04:53:28",
+    "updatedAt": "2024-03-18T22:20:14",
+    "createdBy": 4
+  },
+  {
+    "name": "test merchandise6",
+    "description": "High quality and reliable product",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 12.6,
+    "stock": 3,
+    "createdAt": "2024-09-19T01:58:06",
+    "updatedAt": "2024-11-13T11:50:00",
+    "createdBy": 3
+  },
+  {
+    "name": "test goods7",
+    "description": "Best product in its category",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 31.54,
+    "stock": 5,
+    "createdAt": "2024-09-01T10:47:40",
+    "updatedAt": "2024-10-22T06:38:26",
+    "createdBy": 2
+  },
+  {
+    "name": "test item8",
+    "description": "High quality and reliable product",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 42.73,
+    "stock": 3,
+    "createdAt": "2024-05-19T06:27:08",
+    "updatedAt": "2024-10-25T19:11:14",
+    "createdBy": 3
+  },
+  {
+    "name": "test product9",
+    "description": "Perfect for daily use",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 18.42,
+    "stock": 14,
+    "createdAt": "2024-06-02T21:49:04",
+    "updatedAt": "2024-11-04T23:28:46",
+    "createdBy": 2
+  },
+  {
+    "name": "test goods10",
+    "description": "Perfect for daily use",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 29.77,
+    "stock": 20,
+    "createdAt": "2024-10-09T06:24:49",
+    "updatedAt": "2024-10-11T12:09:12",
+    "createdBy": 2
+  },
+  {
+    "name": "test item11",
+    "description": "This is an awesome product description",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 45.15,
+    "stock": 16,
+    "createdAt": "2024-05-11T23:17:14",
+    "updatedAt": "2024-06-05T05:20:06",
+    "createdBy": 1
+  },
+  {
+    "name": "test goods12",
+    "description": "Best product in its category",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 42.84,
+    "stock": 17,
+    "createdAt": "2024-08-28T14:49:06",
+    "updatedAt": "2024-11-03T19:52:16",
+    "createdBy": 3
+  },
+  {
+    "name": "test merchandise13",
+    "description": "This is an awesome product description",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 9.92,
+    "stock": 11,
+    "createdAt": "2024-07-21T06:32:51",
+    "updatedAt": "2024-11-08T20:20:24",
+    "createdBy": 3
+  },
+  {
+    "name": "test goods14",
+    "description": "High quality and reliable product",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 19.89,
+    "stock": 1,
+    "createdAt": "2024-08-30T15:26:28",
+    "updatedAt": "2024-11-08T08:37:56",
+    "createdBy": 3
+  },
+  {
+    "name": "test merchandise15",
+    "description": "Perfect for daily use",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 6.94,
+    "stock": 0,
+    "createdAt": "2024-05-16T23:23:42",
+    "updatedAt": "2024-10-02T04:43:39",
+    "createdBy": 2
+  },
+  {
+    "name": "test goods16",
+    "description": "Perfect for daily use",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 20.23,
+    "stock": 5,
+    "createdAt": "2024-04-21T18:00:28",
+    "updatedAt": "2024-09-11T23:37:08",
+    "createdBy": 5
+  },
+  {
+    "name": "test item17",
+    "description": "High quality and reliable product",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 6.76,
+    "stock": 11,
+    "createdAt": "2024-06-03T20:12:21",
+    "updatedAt": "2024-06-27T01:54:17",
+    "createdBy": 3
+  },
+  {
+    "name": "test commodity18",
+    "description": "Affordable and durable",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 28.85,
+    "stock": 2,
+    "createdAt": "2024-06-27T23:56:25",
+    "updatedAt": "2024-08-08T16:16:33",
+    "createdBy": 5
+  },
+  {
+    "name": "test commodity19",
+    "description": "This is an awesome product description",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 21.19,
+    "stock": 0,
+    "createdAt": "2024-01-05T11:59:16",
+    "updatedAt": "2024-02-29T20:58:23",
+    "createdBy": 4
+  },
+  {
+    "name": "test item20",
+    "description": "Best product in its category",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 11.58,
+    "stock": 10,
+    "createdAt": "2024-03-08T06:33:58",
+    "updatedAt": "2024-03-15T16:15:22",
+    "createdBy": 2
+  },
+  {
+    "name": "test commodity21",
+    "description": "Affordable and durable",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 17.94,
+    "stock": 11,
+    "createdAt": "2024-03-21T03:45:19",
+    "updatedAt": "2024-07-14T01:19:45",
+    "createdBy": 5
+  },
+  {
+    "name": "test item22",
+    "description": "High quality and reliable product",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 31.08,
+    "stock": 19,
+    "createdAt": "2024-04-18T04:42:58",
+    "updatedAt": "2024-09-05T18:25:00",
+    "createdBy": 4
+  },
+  {
+    "name": "test item23",
+    "description": "This is an awesome product description",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 37.81,
+    "stock": 3,
+    "createdAt": "2024-09-17T15:27:46",
+    "updatedAt": "2024-10-17T08:34:06",
+    "createdBy": 5
+  },
+  {
+    "name": "test goods24",
+    "description": "Best product in its category",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 25.62,
+    "stock": 12,
+    "createdAt": "2024-08-22T01:30:48",
+    "updatedAt": "2024-10-07T11:32:02",
+    "createdBy": 4
+  },
+  {
+    "name": "test commodity25",
+    "description": "Perfect for daily use",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 42.93,
+    "stock": 16,
+    "createdAt": "2024-09-28T07:49:25",
+    "updatedAt": "2024-10-27T22:36:43",
+    "createdBy": 1
+  },
+  {
+    "name": "test item26",
+    "description": "High quality and reliable product",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 7.87,
+    "stock": 16,
+    "createdAt": "2024-03-10T02:35:23",
+    "updatedAt": "2024-06-20T07:16:32",
+    "createdBy": 3
+  },
+  {
+    "name": "test goods27",
+    "description": "Perfect for daily use",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 35.39,
+    "stock": 15,
+    "createdAt": "2024-08-09T07:30:25",
+    "updatedAt": "2024-11-09T07:17:29",
+    "createdBy": 1
+  },
+  {
+    "name": "test goods28",
+    "description": "This is an awesome product description",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 27.92,
+    "stock": 1,
+    "createdAt": "2024-01-06T14:15:34",
+    "updatedAt": "2024-02-11T03:10:32",
+    "createdBy": 3
+  },
+  {
+    "name": "test item29",
+    "description": "High quality and reliable product",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 48.05,
+    "stock": 16,
+    "createdAt": "2024-08-12T10:03:59",
+    "updatedAt": "2024-11-16T08:01:09",
+    "createdBy": 5
+  },
+  {
+    "name": "test merchandise30",
+    "description": "Best product in its category",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 31.75,
+    "stock": 16,
+    "createdAt": "2024-03-16T11:09:29",
+    "updatedAt": "2024-05-01T03:34:08",
+    "createdBy": 1
+  },
+  {
+    "name": "test goods31",
+    "description": "This is an awesome product description",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 41.87,
+    "stock": 14,
+    "createdAt": "2024-07-01T21:25:31",
+    "updatedAt": "2024-08-01T04:05:06",
+    "createdBy": 3
+  },
+  {
+    "name": "test goods32",
+    "description": "High quality and reliable product",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 32.31,
+    "stock": 17,
+    "createdAt": "2024-07-09T19:16:47",
+    "updatedAt": "2024-11-07T11:31:07",
+    "createdBy": 2
+  },
+  {
+    "name": "test merchandise33",
+    "description": "Perfect for daily use",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 24.23,
+    "stock": 14,
+    "createdAt": "2024-06-14T07:21:27",
+    "updatedAt": "2024-07-18T06:42:07",
+    "createdBy": 3
+  },
+  {
+    "name": "test commodity34",
+    "description": "Affordable and durable",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 17.06,
+    "stock": 1,
+    "createdAt": "2024-06-10T07:49:21",
+    "updatedAt": "2024-10-02T00:58:42",
+    "createdBy": 5
+  },
+  {
+    "name": "test merchandise35",
+    "description": "This is an awesome product description",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 42.21,
+    "stock": 15,
+    "createdAt": "2024-04-15T21:51:41",
+    "updatedAt": "2024-10-12T03:42:44",
+    "createdBy": 3
+  },
+  {
+    "name": "test goods36",
+    "description": "Perfect for daily use",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 45.26,
+    "stock": 9,
+    "createdAt": "2024-08-02T23:06:07",
+    "updatedAt": "2024-09-30T13:24:09",
+    "createdBy": 4
+  },
+  {
+    "name": "test goods37",
+    "description": "Affordable and durable",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 33.61,
+    "stock": 20,
+    "createdAt": "2024-08-04T10:07:57",
+    "updatedAt": "2024-08-31T05:46:18",
+    "createdBy": 5
+  },
+  {
+    "name": "test merchandise38",
+    "description": "High quality and reliable product",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 9.17,
+    "stock": 1,
+    "createdAt": "2024-03-06T09:39:43",
+    "updatedAt": "2024-10-19T20:49:24",
+    "createdBy": 3
+  },
+  {
+    "name": "test commodity39",
+    "description": "This is an awesome product description",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 22.53,
+    "stock": 20,
+    "createdAt": "2024-09-24T11:47:19",
+    "updatedAt": "2024-11-03T13:29:35",
+    "createdBy": 3
+  },
+  {
+    "name": "test goods40",
+    "description": "Perfect for daily use",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 13.72,
+    "stock": 13,
+    "createdAt": "2024-09-25T05:51:30",
+    "updatedAt": "2024-10-26T09:05:15",
+    "createdBy": 4
+  },
+  {
+    "name": "test commodity41",
+    "description": "Perfect for daily use",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 20.4,
+    "stock": 17,
+    "createdAt": "2024-07-30T10:55:01",
+    "updatedAt": "2024-08-24T07:43:22",
+    "createdBy": 2
+  },
+  {
+    "name": "test merchandise42",
+    "description": "This is an awesome product description",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 27.8,
+    "stock": 0,
+    "createdAt": "2024-09-22T15:06:36",
+    "updatedAt": "2024-10-04T17:27:34",
+    "createdBy": 1
+  },
+  {
+    "name": "test goods43",
+    "description": "Best product in its category",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 10.94,
+    "stock": 10,
+    "createdAt": "2024-06-23T18:02:11",
+    "updatedAt": "2024-11-20T12:30:21",
+    "createdBy": 3
+  },
+  {
+    "name": "test commodity44",
+    "description": "High quality and reliable product",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 38.8,
+    "stock": 14,
+    "createdAt": "2024-04-15T17:40:21",
+    "updatedAt": "2024-05-14T20:48:28",
+    "createdBy": 5
+  },
+  {
+    "name": "test item45",
+    "description": "High quality and reliable product",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 31.54,
+    "stock": 15,
+    "createdAt": "2024-07-14T21:40:52",
+    "updatedAt": "2024-10-15T15:44:10",
+    "createdBy": 5
+  },
+  {
+    "name": "test item46",
+    "description": "Perfect for daily use",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 23.08,
+    "stock": 1,
+    "createdAt": "2024-08-07T06:40:20",
+    "updatedAt": "2024-11-14T20:28:06",
+    "createdBy": 4
+  },
+  {
+    "name": "test product47",
+    "description": "Best product in its category",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 28.51,
+    "stock": 13,
+    "createdAt": "2024-03-05T06:26:49",
+    "updatedAt": "2024-05-13T00:37:55",
+    "createdBy": 4
+  },
+  {
+    "name": "test item48",
+    "description": "Perfect for daily use",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 5.82,
+    "stock": 20,
+    "createdAt": "2024-06-06T08:33:57",
+    "updatedAt": "2024-07-26T04:37:36",
+    "createdBy": 4
+  },
+  {
+    "name": "test goods49",
+    "description": "High quality and reliable product",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 49.45,
+    "stock": 18,
+    "createdAt": "2024-02-18T16:31:34",
+    "updatedAt": "2024-07-12T00:29:15",
+    "createdBy": 2
+  },
+  {
+    "name": "test product50",
+    "description": "Affordable and durable",
+    "image": "https://demo2.wpopal.com/strollik5/wp-content/uploads/2019/05/product-2-1-3.jpg",
+    "price": 48.03,
+    "stock": 10,
+    "createdAt": "2024-01-09T17:32:35",
+    "updatedAt": "2024-04-17T23:24:20",
+    "createdBy": 4
+  }
+]
