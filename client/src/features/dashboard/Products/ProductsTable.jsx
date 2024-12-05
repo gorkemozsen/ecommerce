@@ -1,8 +1,10 @@
 import { useProducts } from "../../shop/useProducts";
+
 import Pagination from "../../../ui/Pagination";
 import Table from "../../../ui/Table";
 import ProductRow from "./ProductRow";
 import Spinner from "../../../ui/Spinner";
+import Error from "../../../ui/Error";
 
 function ProductsTable() {
   const { isPending, products, error, numPages, numResults, currentPage } =
@@ -14,8 +16,10 @@ function ProductsTable() {
         <Spinner />
       </Spinner.Container>
     );
-  if (error) return <p>Error: {error.message}</p>;
-  if (!products.length) return <p>No Results...</p>;
+
+  if (error) return <Error>Error: {error.message}</Error>;
+  if (!products.length) return <Error>No Results...</Error>;
+
   return (
     <>
       <Table columns="0.5fr 2fr 1.5fr 0.5fr 0.5fr 1fr">

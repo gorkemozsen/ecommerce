@@ -1,16 +1,17 @@
+import { useState } from "react";
 import styled from "styled-components";
+
+import { useCreateProduct } from "./useCreateProduct";
+import { useDeleteProduct } from "./useDeleteProduct";
+import { formatToTwoDecimal } from "../../../hooks/formattoTwoDecimal";
+
+import { TableItem } from "../Orders/OrderRow";
 import Table from "../../../ui/Table";
-import { SlOptionsVertical } from "react-icons/sl";
 import Modal from "../../../ui/Modal/Modal";
 import Button from "../../../ui/Button";
 import CreateProductForm from "./CreateProductForm";
-import { useCreateProduct } from "./useCreateProduct";
-import { useDeleteProduct } from "./useDeleteProduct";
 import Confirm from "../../../ui/Confirm";
 import Menus from "../../../ui/Menus";
-import { useState } from "react";
-import { TableItem } from "../Orders/OrderRow";
-import { formatToTwoDecimal } from "../../../hooks/formattoTwoDecimal";
 
 const Img = styled.img`
   && {

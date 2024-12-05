@@ -10,8 +10,11 @@ export function useDeleteProduct() {
       queryClient.invalidateQueries(["products"]);
       toast.success(`Product succesfully deleted.`);
     },
-    onError: (err) => {
-      toast.warn(`Product delete failed! <br /> ${err.message}`);
+
+    onError: (error) => {
+      const errorMessage =
+        error.response?.data?.message || "Product delete failed!";
+      toast.error(errorMessage);
     },
   });
 

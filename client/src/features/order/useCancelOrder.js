@@ -11,8 +11,10 @@ export function useCancelOrder() {
       queryClient.invalidateQueries(["orders"]);
       toast.success("Order succesfully cancelled!");
     },
-    onError: (err) => {
-      toast.warn(`Order cancel failed! <br /> ${err.message}`);
+    onError: (error) => {
+      const errorMessage =
+        error.response?.data?.message || "Failed to cancel order.";
+      toast.error(errorMessage);
     },
   });
 

@@ -1,10 +1,7 @@
-import axios from "axios";
 import apiClient from "./apiClient";
 
-const API_URL = import.meta.env.VITE_API_URL;
-
 export async function getProducts({ page, limit, filter, sortBy, query }) {
-  const res = await apiClient.get(`${API_URL}/products`, {
+  const res = await apiClient.get(`/products`, {
     params: { page, limit, filter, sortBy, query },
   });
 
@@ -14,7 +11,7 @@ export async function getProducts({ page, limit, filter, sortBy, query }) {
 export async function getProductById(id) {
   if (!id) throw new Error("Product ID is required");
 
-  const res = await apiClient.get(`${API_URL}/products/${id}`);
+  const res = await apiClient.get(`/products/${id}`);
 
   if (!res.data) {
     throw new Error("No data received from API");

@@ -5,6 +5,7 @@ import Button from "./Button";
 import { useSelector } from "react-redux";
 import { formatToTwoDecimal } from "../hooks/formattoTwoDecimal";
 import { useNavigate } from "react-router-dom";
+import Error from "./Error";
 
 const StyledCartDropdown = styled.div`
   && {
@@ -63,10 +64,6 @@ const Buttons = styled.div`
   }
 `;
 
-const Empty = styled.div`
-  padding: 2rem 1rem;
-`;
-
 function CartDropdown({ onIsCartOpen, isCartOpen }) {
   const cart = useSelector((state) => state.cart);
   const navigate = useNavigate();
@@ -86,9 +83,9 @@ function CartDropdown({ onIsCartOpen, isCartOpen }) {
         </Header>
 
         {cart.items.length === 0 && (
-          <Empty>
+          <Error>
             <p>No items in your cart...</p>
-          </Empty>
+          </Error>
         )}
 
         {cart?.items.map((item) => (

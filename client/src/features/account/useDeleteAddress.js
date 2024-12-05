@@ -5,16 +5,16 @@ import toast from "react-hot-toast";
 export function useDeleteAddress() {
   const queryClient = useQueryClient();
 
-  const { mutate: deleteAddressMutation, isLoading: isDeleting } = useMutation({
-    mutationFn: deleteAddress, // Silme işlemini yapan fonksiyon
+  const { mutate: deleteAddressMutation, isPending: isDeleting } = useMutation({
+    mutationFn: deleteAddress,
     onSuccess: () => {
-      // Adres listesini güncelle
-      queryClient.invalidateQueries(["addresses"]); // "addresses" cache'ini yeniden yükler
+      queryClient.invalidateQueries(["addresses"]);
       toast.success("Address successfully deleted!");
     },
-    onError: (err) => {
-      // Hata bildirimini göster
-      toast.error(`Failed to delete address: ${err.message}`);
+    onError: (error) => {
+      const errorMessage =
+        error.response?.data?.message || "Failed to delete address.";
+      toast.error(errorMessage);
     },
   });
 

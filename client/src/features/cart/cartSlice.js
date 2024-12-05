@@ -11,7 +11,7 @@ const localState = localStorage.getItem("cart");
 const initialState = {
   items: localState ? JSON.parse(localState) : [],
   totalPrice: localState ? calculateTotalPrice(JSON.parse(localState)) : 0,
-  addressId: null, // Yeni addressId alanı eklendi
+  addressId: null,
 };
 
 const cartSlice = createSlice({
@@ -59,7 +59,7 @@ const cartSlice = createSlice({
     },
 
     addAddressId: (state, action) => {
-      state.addressId = action.payload; // Gönderilen id'yi state.addressId'ye ata
+      state.addressId = action.payload;
     },
   },
 });

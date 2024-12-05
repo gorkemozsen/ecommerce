@@ -1,12 +1,21 @@
+import styled from "styled-components";
 import { useSelector } from "react-redux";
+
 import Table from "../../ui/Table";
 import CartRow from "./CartRow";
 
-import styled from "styled-components";
+const StyledCartTable = styled.div`
+  && {
+  }
+`;
 
-const StyledCartTable = styled.div``;
-
-const Empty = styled.div``;
+const Empty = styled.div`
+  && {
+    padding: 4rem;
+    font-weight: 600;
+    text-align: center;
+  }
+`;
 
 function CartTable(props) {
   const cartItems = useSelector((state) => state.cart.items);

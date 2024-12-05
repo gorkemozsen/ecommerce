@@ -12,7 +12,8 @@ export function useEmailUpdate() {
     },
     onError: (error) => {
       const errorMessage =
-        error?.message || "An error occurred while updating the email.";
+        error?.response?.data?.message ||
+        "An error occurred while updating the email.";
       toast.error(errorMessage);
     },
   });

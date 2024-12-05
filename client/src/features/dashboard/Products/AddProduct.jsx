@@ -11,16 +11,6 @@ function AddProduct() {
       <Modal.Window name="product-form">
         <CreateProductForm />
       </Modal.Window>
-
-      {/* <Modal.Open opens="table">
-        <Button>Add new product</Button>
-      </Modal.Open>
-      <Modal.Window name="table">
-        <form>
-          <label>Table Name</label>
-          <input type="text" />
-        </form>
-      </Modal.Window> */}
     </Modal>
   );
 }

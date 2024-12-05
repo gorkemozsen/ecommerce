@@ -1,20 +1,19 @@
 import { useState } from "react";
-import Button from "../../ui/Button";
-import Modal from "../../ui/Modal/Modal";
-import Table from "../../ui/Table";
-import Confirm from "../../ui/Confirm";
+
 import { formatDateToLocal } from "../../hooks/formatDateToLocal";
 import { formatToTwoDecimal } from "../../hooks/formattoTwoDecimal";
 import { useCancelOrder } from "../order/useCancelOrder";
 import { TableItem } from "../dashboard/Orders/OrderRow";
 
+import Button from "../../ui/Button";
+import Modal from "../../ui/Modal/Modal";
+import Table from "../../ui/Table";
+import Confirm from "../../ui/Confirm";
+
 function OrderRow({ order }) {
   const { id, items, date, total, status } = order;
 
   const { isPending, cancelOrder } = useCancelOrder();
-
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <Table.Row>
@@ -41,7 +40,7 @@ function OrderRow({ order }) {
       </TableItem>
       <TableItem>
         {status !== "cancelled" && status === "pending" && (
-          <Modal onIsModalOpen={setIsModalOpen}>
+          <Modal>
             <Modal.Open opens="product-edit">
               <Button>Cancel</Button>
             </Modal.Open>
@@ -49,6 +48,7 @@ function OrderRow({ order }) {
               <Confirm
                 title="Cancel Order"
                 operation="Yes"
+                disabled={isPending}
                 description={`Are you sure want to cancel order "${id}"`}
                 onConfirm={() => {
                   cancelOrder(id);

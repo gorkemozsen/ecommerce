@@ -16,9 +16,12 @@ export function useSignIn() {
       queryClient.invalidateQueries(["user"]);
       navigate("/");
     },
-    onError: (err) => {
-      console.log(err);
-      toast.error("Provided email or password are incorrect");
+
+    onError: (error) => {
+      const errorMessage =
+        error.response?.data?.message ||
+        "Provided email or password are incorrect";
+      toast.error(errorMessage);
     },
   });
 

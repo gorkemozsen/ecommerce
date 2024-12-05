@@ -5,6 +5,7 @@ import ProductList from "../../ui/ProductList";
 import Pagination from "../../ui/Pagination";
 import Spinner from "../../ui/Spinner";
 import ProductTableOperations from "./ProductTableOperations";
+import Error from "../../ui/Error";
 
 function Products() {
   const { isPending, products, error, numPages, numResults, currentPage } =
@@ -16,12 +17,12 @@ function Products() {
         <Spinner />
       </Spinner.Container>
     );
-  if (error) return <p>Error: {error.message}</p>;
-  if (!products?.length) return <p>No Results...</p>;
+  if (error) return <Error>Error: {error.message}</Error>;
+
+  if (!products?.length) return <Error>No Results...</Error>;
 
   return (
     <>
-      <ProductTableOperations />
       <ProductList className="d-flex flex-wrap justify-content-center">
         {products.map((product) => (
           <ProductCard key={product.id} product={product}></ProductCard>

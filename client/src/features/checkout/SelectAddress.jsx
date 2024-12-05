@@ -1,10 +1,13 @@
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { useUserAddress } from "../account/useUserAddress";
-import Spinner from "../../ui/Spinner";
 import { useEffect, useState } from "react";
-import CartTotal from "../cart/CartTotal";
+import { useDispatch, useSelector } from "react-redux";
+
+import { useUserAddress } from "../account/useUserAddress";
 import { addAddressId } from "../cart/cartSlice";
+
+import Spinner from "../../ui/Spinner";
+import CartTotal from "../cart/CartTotal";
+import Error from "../../ui/Error";
 
 const StyledSelectAddress = styled.div`
   && {
@@ -61,8 +64,6 @@ function SelectAddress() {
 
   const [selectedAddress, setSelectedAddress] = useState();
 
-  console.log(selectedAddress);
-
   useEffect(() => {
     setSelectedAddress(addressList?.find((address) => address?.isDefault).id);
   }, [addressList]);
@@ -80,7 +81,9 @@ function SelectAddress() {
     );
   }
 
-  console.log(addressList);
+  if (error) {
+    return <Error>An error occurred while fetching addresses.</Error>;
+  }
 
   return (
     <StyledSelectAddress className="row justify-content-center justify-content-lg-between">

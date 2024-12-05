@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -6,14 +7,12 @@ import { useSingleProduct } from "./useSingleProduct";
 import { addItem } from "../cart/cartSlice";
 import { useQuantity } from "../../hooks/useQuantity";
 import { findItemInCart } from "../cart/cartUtils";
-
-import QuantityBar from "../../ui/QuantityBar";
-import Button from "../../ui/Button";
-import styled from "styled-components";
-import Seperator from "../../ui/Seperator";
+import { formatToTwoDecimal } from "../../hooks/formattoTwoDecimal";
 
 import InnerImageZoom from "react-inner-image-zoom";
-
+import QuantityBar from "../../ui/QuantityBar";
+import Button from "../../ui/Button";
+import Seperator from "../../ui/Seperator";
 import { FaCodeCompare, FaHeart } from "react-icons/fa6";
 import {
   FaFacebookSquare,
@@ -24,7 +23,7 @@ import {
 } from "react-icons/fa";
 import ProductInfo from "../../ui/ProductInfo";
 import Spinner from "../../ui/Spinner";
-import { formatToTwoDecimal } from "../../hooks/formattoTwoDecimal";
+import Error from "../../ui/Error";
 
 const StyledProductDetail = styled.section`
   && {
@@ -164,7 +163,7 @@ function ProductDetail() {
       </Spinner.Container>
     );
 
-  if (error) return <p>{error.message}</p>;
+  if (error) return <Error>{error.message}</Error>;
 
   function handleAddToCart() {
     dispatch(addItem({ product, quantity: currentQuantity }));

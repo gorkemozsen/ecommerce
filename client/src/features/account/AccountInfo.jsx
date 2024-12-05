@@ -1,13 +1,15 @@
-import { useForm } from "react-hook-form";
-import FormRow from "../../ui/FormRow";
-import Input from "../../ui/Input";
-import Button from "../../ui/Button";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import styled from "styled-components";
-import Form from "../../ui/Form";
+
 import { useUser } from "../authentication/useUser";
 import { useEmailUpdate } from "../authentication/useEmailUpdate";
 import { usePassUpdate } from "../authentication/usePassUpdate";
+
+import FormRow from "../../ui/FormRow";
+import Input from "../../ui/Input";
+import Button from "../../ui/Button";
+import Form from "../../ui/Form";
 
 const StyledForm = styled(Form)`
   && {
@@ -21,6 +23,7 @@ function AccountInfo() {
 
   const { updateEmail, isPending: isEmailUpdating } = useEmailUpdate();
   const { updatePassword, isPending: isPasswordUpdating } = usePassUpdate();
+  const isWorking = isEmailUpdating || isPasswordUpdating;
 
   const [isPassEdit, setIsPassEdit] = useState(false);
   const [isEmailEdit, setIsEmailEdit] = useState(false);
@@ -43,8 +46,8 @@ function AccountInfo() {
         },
         {
           onSuccess: () => {
-            reset(); // Formu sıfırlar
-            setIsEmailEdit(false); // E-posta düzenleme modunu kapatır
+            reset();
+            setIsEmailEdit(false);
             setValue("email", data.newEmail);
           },
         }
@@ -59,8 +62,8 @@ function AccountInfo() {
         },
         {
           onSuccess: () => {
-            reset(); // Formu sıfırlar
-            setIsPassEdit(false); // E-posta düzenleme modunu kapatır
+            reset();
+            setIsPassEdit(false);
           },
         }
       );
@@ -69,22 +72,22 @@ function AccountInfo() {
 
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit, onSubmit)}>
-      <FormRow label={"First name"} error={errors?.name?.message}>
+      <FormRow label={"First name"} error={errors?.firstName?.message}>
         <Input
           type="text"
           id="firstName"
-          disabled
+          disabled={isWorking}
           {...register("firstName", {
             required: "This field is required",
           })}
         />
       </FormRow>
 
-      <FormRow label={"Last name"} error={errors?.name?.message}>
+      <FormRow label={"Last name"} error={errors?.lastName?.message}>
         <Input
           type="text"
           id="lastName"
-          disabled
+          disabled={isWorking}
           {...register("lastName", {
             required: "This field is required",
           })}
@@ -92,9 +95,10 @@ function AccountInfo() {
       </FormRow>
 
       {!isEmailEdit && (
-        <FormRow label={"Email"} error={errors?.name?.message}>
+        <FormRow label={"Email"} error={errors?.email?.message}>
           {!isEditSession ? (
             <Button
+              disabled={isWorking}
               onClick={(e) => {
                 e.preventDefault();
                 if (!isEditSession) {
@@ -108,7 +112,7 @@ function AccountInfo() {
           <Input
             type="email"
             id="email"
-            disabled={isPending || !isEmailEdit}
+            disabled={isPending || !isEmailEdit || isWorking}
             {...register("email", {
               required: "This field is required",
             })}
@@ -117,11 +121,11 @@ function AccountInfo() {
       )}
 
       {isEmailEdit && (
-        <FormRow label={"New Email"} error={errors?.name?.message}>
+        <FormRow label={"New Email"} error={errors?.newEmail?.message}>
           <Input
             type="email"
             id="newEmail"
-            disabled={isPending || !isEmailEdit}
+            disabled={isPending || !isEmailEdit || isWorking}
             {...register("newEmail", {
               required: "This field is required",
             })}
@@ -135,7 +139,7 @@ function AccountInfo() {
           error={errors?.currentPassword?.message}
         >
           <Input
-            disabled={isPending || !isEditSession}
+            disabled={isPending || !isEditSession || isWorking}
             $bg="white"
             type="password"
             id="currentPassword"
@@ -148,13 +152,13 @@ function AccountInfo() {
 
       <FormRow
         label={isPassEdit ? "New Password" : "Password"}
-        error={errors?.name?.message}
+        error={errors?.newPassword?.message}
       >
         {isPassEdit && (
           <Input
             type="password"
             id="newPassword"
-            disabled={isPending || !isEditSession}
+            disabled={isPending || !isEditSession || isWorking}
             {...register("newPassword", {
               required: "This field is required",
             })}
@@ -163,6 +167,7 @@ function AccountInfo() {
 
         {!isEditSession ? (
           <Button
+            disabled={isWorking}
             onClick={(e) => {
               e.preventDefault();
               if (!isEditSession) {
@@ -181,7 +186,7 @@ function AccountInfo() {
           error={errors?.confirmNewPassword?.message}
         >
           <Input
-            disabled={isPending || !isPassEdit}
+            disabled={isPending || !isPassEdit || isWorking}
             $bg="white"
             type="password"
             id="confirmNewPassword"
@@ -198,6 +203,7 @@ function AccountInfo() {
         {isEditSession && (
           <>
             <Button
+              disabled={isWorking}
               onClick={(e) => {
                 e.preventDefault();
                 reset(editValues);
@@ -208,7 +214,7 @@ function AccountInfo() {
               Cancel
             </Button>
 
-            <Button type="submit" disabled={isPending}>
+            <Button type="submit" disabled={isPending || isWorking}>
               Save
             </Button>
           </>

@@ -1,18 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import apiClient from "../services/apiClient";
 
 const fetchCities = async () => {
-  const token = localStorage.getItem("accessToken");
-  try {
-    const res = await axios.get("http://127.0.0.1:3001/api/addresses/cities", {
-      headers: {
-        Authorization: `Bearer ${token}`, // Token ekleniyor
-      },
-    });
-    return res.data;
-  } catch (error) {
-    throw new Error(error.message);
-  }
+  const res = await apiClient.get("/addresses/cities");
+  return res.data;
 };
 
 export const useCities = () => {
@@ -27,21 +18,8 @@ export const useCities = () => {
 const fetchDistricts = async (city) => {
   if (!city) return [];
 
-  const token = localStorage.getItem("accessToken");
-
-  try {
-    const res = await axios.get(
-      `http://127.0.0.1:3001/api/addresses/districts/${city}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`, // Token ekleniyor
-        },
-      }
-    );
-    return res.data;
-  } catch (error) {
-    throw new Error(error.message);
-  }
+  const res = await apiClient.get(`/addresses/districts/${city}`);
+  return res.data;
 };
 
 export const useDistricts = (city) => {
@@ -57,22 +35,10 @@ export const useDistricts = (city) => {
 const fetchNeighborhoods = async (city, district) => {
   if (!city && !district) return [];
 
-  const token = localStorage.getItem("accessToken");
-
-  try {
-    const res = await axios.get(
-      `http://127.0.0.1:3001/api/addresses/neighborhoods/${city}/${district}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`, // Token ekleniyor
-        },
-      }
-    );
-
-    return res.data;
-  } catch (error) {
-    throw new Error(error.message);
-  }
+  const res = await apiClient.get(
+    `/addresses/neighborhoods/${city}/${district}`
+  );
+  return res.data;
 };
 
 export const useNeighborhoods = (city, district) => {
@@ -88,22 +54,8 @@ export const useNeighborhoods = (city, district) => {
 const fetchStreets = async (city, neighborhood) => {
   if (!city && !neighborhood) return [];
 
-  const token = localStorage.getItem("accessToken");
-
-  try {
-    const res = await axios.get(
-      `http://127.0.0.1:3001/api/addresses/streets/${city}/${neighborhood}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`, // Token ekleniyor
-        },
-      }
-    );
-
-    return res.data;
-  } catch (error) {
-    throw new Error(error.message);
-  }
+  const res = await apiClient.get(`/addresses/streets/${city}/${neighborhood}`);
+  return res.data;
 };
 
 export const useStreets = (city, neighborhood) => {

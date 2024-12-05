@@ -1,4 +1,3 @@
-import CartTotal from "../../features/cart/CartTotal";
 import SelectAddress from "../../features/checkout/SelectAddress";
 
 import styled from "styled-components";

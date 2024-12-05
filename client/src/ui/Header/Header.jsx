@@ -1,17 +1,18 @@
-import { FaCartArrowDown, FaPhone } from "react-icons/fa6";
-import StyledHeader from "./Header.styles";
+import styled, { css } from "styled-components";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
+import { useUser } from "../../features/authentication/useUser";
+import { useLogout } from "../../features/authentication/useLogout";
+
+import { FaCartArrowDown, FaPhone } from "react-icons/fa6";
+import { IoMenu } from "react-icons/io5";
+import StyledHeader from "./Header.styles";
 import Link from "../Link";
 import Logo from "../Logo/Logo";
 import Button from "../Button";
-import styled, { css } from "styled-components";
-import { IoMenu } from "react-icons/io5";
-import { useState } from "react";
 import CartDropdown from "../CartDropdown";
-import { useSelector } from "react-redux";
-import { useUser } from "../../features/authentication/useUser";
-import { useLogout } from "../../features/authentication/useLogout";
-import { useNavigate } from "react-router-dom";
 
 const TopBar = styled.nav`
   && {
@@ -190,10 +191,6 @@ function Header() {
           </ToggleButton>
         </div>
       </NavBar>
-
-      {/* <MobileNav />
-      <TopBar />
-      <NavBar /> */}
 
       <Background
         onClick={() => {

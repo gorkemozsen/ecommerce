@@ -1,9 +1,11 @@
+import styled from "styled-components";
 import { useForm } from "react-hook-form";
+
+import { useEditOrder } from "./useEditOrder";
+
 import Form from "../../../ui/Form";
 import FormRow from "../../../ui/FormRow";
 import Button from "../../../ui/Button";
-import { useEditOrder } from "./useEditOrder";
-import styled from "styled-components";
 
 const StyledEditOrderForm = styled(Form)`
   && {
@@ -22,6 +24,7 @@ function EditOrderForm({ orderToEdit = {}, onCloseModal }) {
   const { register, handleSubmit, reset, formState } = useForm({
     defaultValues: { status: status.charAt(0).toUpperCase() + status.slice(1) },
   });
+
   const { errors } = formState;
 
   function onSubmit(data) {
@@ -36,10 +39,6 @@ function EditOrderForm({ orderToEdit = {}, onCloseModal }) {
         },
       }
     );
-  }
-
-  function onError(errors) {
-    console.log(errors);
   }
 
   return (
@@ -63,7 +62,11 @@ function EditOrderForm({ orderToEdit = {}, onCloseModal }) {
         </select>
       </FormRow>
       <div className="btn-box">
-        <Button type="reset" onClick={() => onCloseModal?.()}>
+        <Button
+          disabled={isPending}
+          type="reset"
+          onClick={() => onCloseModal?.()}
+        >
           Cancel
         </Button>
         <Button type="submit" disabled={isPending}>

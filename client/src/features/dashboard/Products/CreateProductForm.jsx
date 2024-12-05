@@ -1,12 +1,14 @@
-import { useForm } from "react-hook-form";
-import FormRow from "../../../ui/FormRow";
-import Input from "../../../ui/Input";
-import { useCreateProduct } from "./useCreateProduct";
-import Button from "../../../ui/Button";
-import { useEditProduct } from "./useEditProduct";
-import { useUpload } from "../../useUpload";
 import { useState } from "react";
 import styled from "styled-components";
+
+import { useForm } from "react-hook-form";
+import { useEditProduct } from "./useEditProduct";
+import { useCreateProduct } from "./useCreateProduct";
+import { useUpload } from "../../useUpload";
+
+import Button from "../../../ui/Button";
+import Input from "../../../ui/Input";
+import FormRow from "../../../ui/FormRow";
 import TextArea from "../../../ui/TextArea";
 import Form from "../../../ui/Form";
 
@@ -14,12 +16,6 @@ const Img = styled.img`
   && {
     width: 100px;
     height: 100px;
-  }
-`;
-
-const PhotoRow = styled(FormRow)`
-  && {
-    flex-wrap: wrap !important;
   }
 `;
 
@@ -72,10 +68,6 @@ function CreateProductForm({ productToEdit = {}, onCloseModal }) {
           onCloseModal?.();
         },
       });
-  }
-
-  function onError(errors) {
-    console.log(errors);
   }
 
   return (

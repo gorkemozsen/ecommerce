@@ -1,18 +1,20 @@
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import Form from "../../ui/Form";
-import FormRow from "../../ui/FormRow";
-import Button from "../../ui/Button";
 import styled from "styled-components";
+
 import {
   useCities,
   useDistricts,
   useNeighborhoods,
   useStreets,
 } from "../../hooks/useAddress";
-import Input from "../../ui/Input";
 import { useCreateAddress } from "./useCreateAddress";
 import { useEditAddress } from "./useEditAddress";
-import { useEffect, useState } from "react";
+
+import Form from "../../ui/Form";
+import FormRow from "../../ui/FormRow";
+import Button from "../../ui/Button";
+import Input from "../../ui/Input";
 import Select from "../../ui/Select";
 import TextArea from "../../ui/TextArea";
 import Spinner from "../../ui/Spinner";
@@ -70,29 +72,18 @@ function AddressForm({ address = {}, onCloseModal }) {
   const selectedDistrict = watch("district");
   const selectedNeighborhood = watch("neighborhood");
 
-  const {
-    data: cities,
-    isLoading: isCitiesLoading,
-    isError: isErrorCities,
-  } = useCities();
+  const { data: cities, isLoading: isCitiesLoading } = useCities();
 
-  const {
-    data: districts,
-    isLoading: isDistrictsLoading,
-    isErrorDistricts,
-  } = useDistricts(selectedCity);
+  const { data: districts, isLoading: isDistrictsLoading } =
+    useDistricts(selectedCity);
 
-  const {
-    data: neighborhoods,
-    isLoading: isNeighborhoodsLoading,
-    isErrorNeighborhoods,
-  } = useNeighborhoods(selectedCity, selectedDistrict);
+  const { data: neighborhoods, isLoading: isNeighborhoodsLoading } =
+    useNeighborhoods(selectedCity, selectedDistrict);
 
-  const {
-    data: streets,
-    isLoading: isStreetsLoading,
-    isErrorStreets,
-  } = useStreets(selectedCity, selectedNeighborhood.replace(" MAHALLESİ", ""));
+  const { data: streets, isLoading: isStreetsLoading } = useStreets(
+    selectedCity,
+    selectedNeighborhood.replace(" MAHALLESİ", "")
+  );
 
   const isFetching =
     isCitiesLoading ||
@@ -104,7 +95,6 @@ function AddressForm({ address = {}, onCloseModal }) {
     setFetchCount((count) => count + 1);
   }, [isFetching]);
 
-  console.log(fetchCount);
   const { errors } = formState;
 
   function onSubmit(data) {

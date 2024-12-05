@@ -5,6 +5,7 @@ import AddressList from "../../ui/AddressList";
 import AddressForm from "./AddressForm";
 import Modal from "../../ui/Modal/Modal";
 import Button from "../../ui/Button";
+import Error from "../../ui/Error";
 
 const StyledUserAddresses = styled.div`
   && {
@@ -17,8 +18,6 @@ const StyledUserAddresses = styled.div`
 
 function UserAddresses() {
   const { isPending, data, error } = useUserAddress();
-
-  console.log(error?.status);
 
   if (isPending)
     return (
@@ -38,7 +37,7 @@ function UserAddresses() {
             <AddressForm />
           </Modal.Window>
         </Modal>
-        {error && <p>{error.message}</p>}
+        {error && <Error>{error?.response?.data?.message}</Error>}
         {!error && <AddressList addresses={data.addresses} />}
       </StyledUserAddresses>
     </>

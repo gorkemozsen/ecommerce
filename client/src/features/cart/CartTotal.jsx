@@ -1,11 +1,13 @@
-import { useSelector } from "react-redux";
-import Seperator from "../../ui/Seperator";
 import styled from "styled-components";
-import Button from "../../ui/Button";
-import { useCreateOrder } from "../order/useCreateOrder";
-import { useUser } from "../authentication/useUser";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 import { formatToTwoDecimal } from "../../hooks/formattoTwoDecimal";
+import { useUser } from "../authentication/useUser";
+import { useCreateOrder } from "../order/useCreateOrder";
+
+import Seperator from "../../ui/Seperator";
+import Button from "../../ui/Button";
 import Modal from "../../ui/Modal/Modal";
 import Confirm from "../../ui/Confirm";
 
@@ -23,9 +25,6 @@ const StyledCartTotal = styled.div`
 
     & h2 {
       font-size: var(--fs-h2);
-    }
-
-    & .total-row {
     }
   }
 `;
@@ -88,6 +87,7 @@ function CartTotal({ isCheckout, addressId, ...props }) {
               <Confirm
                 onConfirm={handleCreateOrder}
                 operation="Create"
+                disabled={isPending}
                 title="Create Order"
                 description={`Are you sure want to create this order?  Total Price: $ ${formatToTwoDecimal(
                   totalPrice

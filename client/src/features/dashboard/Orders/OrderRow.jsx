@@ -1,6 +1,5 @@
-import { useState } from "react";
-
 import styled from "styled-components";
+import { useState } from "react";
 
 import { formatDateToLocal } from "../../../hooks/formatDateToLocal";
 import { formatToTwoDecimal } from "../../../hooks/formattoTwoDecimal";
@@ -32,7 +31,6 @@ const ChangeButton = styled(Button)`
 function OrderRow({ order }) {
   const { id, date, total, status, items, createdBy } = order;
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -73,43 +71,6 @@ function OrderRow({ order }) {
             <EditOrderForm orderToEdit={order} />
           </Modal.Window>
         </Modal>
-        {/* <Menus
-          onIsMenuOpen={setIsMenuOpen}
-          isMenuOpen={isMenuOpen}
-          isModalOpen={isModalOpen}
-        >
-          
-
-          <Modal onIsModalOpen={setIsModalOpen}>
-            <Modal.Open opens="product-duplicate">
-              <Button>Duplicate</Button>
-            </Modal.Open>
-            <Modal.Window name="product-duplicate">
-              <Confirm
-                operation="Duplicate"
-                title={`Duplicate ${order?.name}`}
-                description={`Are you sure want to duplicate ${order?.name} ?`}
-                // onConfirm={handleDuplicate}
-                // disabled={isDuplicating}
-              />
-            </Modal.Window>
-          </Modal>
-
-          <Modal onIsModalOpen={setIsModalOpen}>
-            <Modal.Open opens="order-delete">
-              <Button>Delete</Button>
-            </Modal.Open>
-            <Modal.Window name="order-delete">
-              <Confirm
-                operation="Delete"
-                title={`Delete ${order?.name}`}
-                description={`Are you sure want to Delete ${order?.name} ?`}
-                // onConfirm={() => handleDelete(order?.id)}
-                // disabled={isDuplicating}
-              />
-            </Modal.Window>
-          </Modal>
-        </Menus> */}
       </TableItem>
     </Table.Row>
   );

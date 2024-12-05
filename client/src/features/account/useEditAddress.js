@@ -8,12 +8,14 @@ export function useEditAddress() {
   const { mutate: editAddressMutation, isPending } = useMutation({
     mutationFn: editAddress,
     onSuccess: (updatedAddress) => {
-      // Adres listesini ve cache'i güncelle
       queryClient.invalidateQueries(["addresses"]);
       toast.success("Address successfully updated!");
     },
-    onError: (err) => {
-      toast.error(`Failed to update address: ${err.message}`);
+
+    onError: (error) => {
+      const errorMessage =
+        error.response?.data?.message || "Failed to update address.";
+      toast.error(errorMessage);
     },
   });
 

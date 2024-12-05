@@ -10,11 +10,11 @@ export function useUserAddress() {
       toast.success("Addresses fetched successfully!");
       console.log("Fetched addresses:", data);
     },
+
     onError: (error) => {
-      toast.error(
-        error.response?.data?.message || "Failed to fetch addresses."
-      );
-      console.error("Error fetching addresses:", error.message);
+      const errorMessage =
+        error.response?.data?.message || "Failed to fetch addresses.";
+      toast.error(errorMessage);
     },
   });
 

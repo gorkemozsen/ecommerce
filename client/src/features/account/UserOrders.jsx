@@ -1,3 +1,4 @@
+import Error from "../../ui/Error";
 import Pagination from "../../ui/Pagination";
 import Spinner from "../../ui/Spinner";
 import Table from "../../ui/Table";
@@ -9,8 +10,6 @@ function UserOrders() {
   const { orders, isPending, error, numPages, numResults, currentPage } =
     useUserOrders();
 
-  console.log(orders);
-
   if (isPending)
     return (
       <Spinner.Container>
@@ -18,9 +17,7 @@ function UserOrders() {
       </Spinner.Container>
     );
 
-  if (error) return <p>{error.message}</p>;
-
-  if (!isPending) console.log(orders);
+  if (error) return <Error>{error.message}</Error>;
 
   return (
     <div>

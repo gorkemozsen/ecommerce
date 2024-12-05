@@ -1,6 +1,4 @@
-import { BiSearch } from "react-icons/bi";
 import Seperator from "../../../ui/Seperator";
-
 import ProductsTable from "./ProductsTable";
 import ProductTableOperations from "../../shop/ProductTableOperations";
 import AddProduct from "./AddProduct";

@@ -5,6 +5,7 @@ import StyledShop from "./Shop.styles";
 function Shop() {
   return (
     <StyledShop>
+      <ProductTableOperations />
       <Products />
     </StyledShop>
   );

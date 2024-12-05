@@ -17,10 +17,6 @@ apiClient.interceptors.request.use(
           ...config.headers,
           Authorization: `Bearer ${token}`,
         };
-        console.log(
-          "Authorization Header Eklendi:",
-          config.headers.Authorization
-        );
       } else {
         console.warn("Token Bulunamadı.");
       }

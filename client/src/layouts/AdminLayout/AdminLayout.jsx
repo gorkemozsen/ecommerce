@@ -1,8 +1,9 @@
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
+
 import Header from "../../ui/Dashboard/Header/Header";
 import SideBar from "../../ui/Dashboard/SideBar/SideBar";
 import StyledAdminLayout from "./AdminLayout.styles";
-import { useState } from "react";
 
 function AdminLayout() {
   const [menuOpen, setMenuOpen] = useState();

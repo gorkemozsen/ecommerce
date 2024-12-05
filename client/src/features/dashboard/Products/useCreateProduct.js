@@ -11,8 +11,11 @@ export function useCreateProduct() {
       queryClient.invalidateQueries(["products"]);
       toast.success("Product succesfully created!");
     },
-    onError: (err) => {
-      toast.warn(`Product create failed! <br /> ${err.message}`);
+
+    onError: (error) => {
+      const errorMessage =
+        error.response?.data?.message || "Product create failed!";
+      toast.error(errorMessage);
     },
   });
 

@@ -1,131 +1,47 @@
-import axios from "axios";
+import apiClient from "./apiClient";
 
 export async function createProduct(product) {
-  const token = localStorage.getItem("accessToken");
-
-  console.log(product);
-
-  if (!token) {
-    throw new Error("Access token is missing");
-  }
-
-  try {
-    const res = await axios.post(
-      "http://127.0.0.1:3001/api/products/add",
-      product,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-
-    console.log("Succesfully created!", res.data);
-    return res.data;
-  } catch (error) {
-    throw new Error(error.message);
-  }
+  const res = await apiClient.post("/products/add", product);
+  return res.data;
 }
 
 export async function editProduct({ changedProduct, id }) {
-  const token = localStorage.getItem("accessToken");
-
-  if (!token) {
-    throw new Error("Access token is missing");
-  }
-
   if (!changedProduct) {
     throw new Error("changedProduct is missing");
   }
 
-  try {
-    const res = await axios.put(
-      `http://127.0.0.1:3001/api/products/${id}`,
-      changedProduct,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    return res.data;
-  } catch (error) {
-    throw new Error(error.message);
-  }
+  const res = await apiClient.put(`/products/${id}`, changedProduct);
+  return res.data;
 }
 
 export async function deleteProduct(id) {
-  const token = localStorage.getItem("accessToken");
-
-  if (!token) {
-    throw new Error("Access token is missing");
-  }
-
   if (!id) {
     throw new Error("Product ID is missing");
   }
 
-  try {
-    const res = await axios.delete(`http://127.0.0.1:3001/api/products/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+  const res = await apiClient.delete(`/products/${id}`);
 
-    return res.data;
-  } catch (error) {
-    throw new Error(error.message);
-  }
+  return res.data;
 }
 
 export async function uploadFile(file) {
-  const token = localStorage.getItem("accessToken");
-
   const formData = new FormData();
   formData.append("image", file);
 
-  if (!token) {
-    throw new Error("Access token is missing");
-  }
+  const res = await apiClient.post("/upload", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
 
-  try {
-    const res = await axios.post("http://127.0.0.1:3001/api/upload", formData, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "multipart/form-data",
-      },
-    });
-
-    console.log("Succesfully uploaded!", res.data);
-    return res.data;
-  } catch (error) {
-    throw new Error(error.message);
-  }
+  return res.data;
 }
 
 export async function editOrder({ changedOrder, id }) {
-  const token = localStorage.getItem("accessToken");
-
-  if (!token) {
-    throw new Error("Access token is missing");
-  }
-
   if (!changedOrder) {
     throw new Error("changedOrder is missing");
   }
 
-  try {
-    const res = await axios.put(
-      `http://127.0.0.1:3001/api/orders/${id}`,
-      changedOrder,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    return res.data;
-  } catch (error) {
-    throw new Error(error.message);
-  }
+  const res = await apiClient.put(`/orders/${id}`, changedOrder);
+  return res.data;
 }

@@ -16,8 +16,10 @@ export function useCreateOrder() {
       toast.success("Order successfully created!");
       navigate("/");
     },
-    onError: (err) => {
-      console.log(err.message);
+    onError: (error) => {
+      const errorMessage =
+        error.response?.data?.message || "Failed to create order.";
+      toast.error(errorMessage);
     },
   });
 

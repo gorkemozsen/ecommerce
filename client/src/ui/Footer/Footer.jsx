@@ -2,15 +2,11 @@ import Button from "../Button";
 import Input from "../Input";
 import Seperator from "../Seperator";
 import SocialIcon from "../SocialIcon";
-import MobileFooter from "./MobileFooter/MobileFooter";
 import StyledFooter from "./StyledFooter";
 
 function Footer() {
-  const vpWidth = window.innerWidth;
-
   return (
     <>
-      {/* {vpWidth < 768 && <MobileFooter />} */}
       <StyledFooter className="row">
         <form className="d-flex align-items-center gap-3 justify-content-center flex-md-row flex-column">
           <label htmlFor="emailSubscribe">The Latest From Us</label>

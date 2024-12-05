@@ -11,8 +11,11 @@ export function useEditProduct() {
       queryClient.invalidateQueries(["products"]);
       toast.success("Product succesfully updated!");
     },
-    onError: (err) => {
-      toast.warn(`Product update failed! <br /> ${err.message}`);
+
+    onError: (error) => {
+      const errorMessage =
+        error.response?.data?.message || "Product update failed!";
+      toast.error(errorMessage);
     },
   });
 

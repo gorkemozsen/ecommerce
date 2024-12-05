@@ -10,7 +10,8 @@ export function usePassUpdate() {
     },
     onError: (error) => {
       const errorMessage =
-        error?.message || "An error occurred while updating the password.";
+        error?.response?.data?.message ||
+        "An error occurred while updating the password.";
       toast.error(errorMessage);
     },
   });

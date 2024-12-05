@@ -8,14 +8,13 @@ export function useCreateAddress() {
   const { mutate: createAddressMutaion, isPending } = useMutation({
     mutationFn: createNewAddress,
     onSuccess: (address) => {
-      // Adresler listesini yenile
       queryClient.invalidateQueries(["addresses"]);
-      // Başarılı bildirim
       toast.success("Address successfully created!");
     },
-    onError: (err) => {
-      // Hata bildirim
-      toast.error(`Failed to create address: ${err.message}`);
+    onError: (error) => {
+      const errorMessage =
+        error.response?.data?.message || "Failed to create address.";
+      toast.error(errorMessage);
     },
   });
 

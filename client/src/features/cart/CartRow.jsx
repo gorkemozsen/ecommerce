@@ -1,15 +1,14 @@
-/* eslint-disable react/prop-types */
-import { FaX } from "react-icons/fa6";
-
-import Table from "../../ui/Table";
+import { useEffect } from "react";
 import styled from "styled-components";
 
-import QuantityBar from "../../ui/QuantityBar";
 import { useQuantity } from "../../hooks/useQuantity";
 import { useSingleProduct } from "../shop/useSingleProduct";
-import { useEffect } from "react";
 import { formatToTwoDecimal } from "../../hooks/formattoTwoDecimal";
+
+import QuantityBar from "../../ui/QuantityBar";
 import { Link } from "react-router-dom";
+import { FaX } from "react-icons/fa6";
+import Table from "../../ui/Table";
 
 const Img = styled.img`
   && {

@@ -1,13 +1,14 @@
+import { useOrders } from "./useOrders";
+
+import Error from "../../../ui/Error";
 import Pagination from "../../../ui/Pagination";
 import Spinner from "../../../ui/Spinner";
 import Table from "../../../ui/Table";
 import OrderRow from "./OrderRow";
-import { useOrders } from "./useOrders";
 
 function OrdersTable() {
   const { isPending, orders, error, numPages, numResults, currentPage } =
     useOrders();
-  console.log(orders, numResults);
 
   if (isPending)
     return (
@@ -15,8 +16,9 @@ function OrdersTable() {
         <Spinner />
       </Spinner.Container>
     );
-  if (error) return <p>Error: {error.message}</p>;
-  if (!orders.length) return <p>No Results...</p>;
+  if (error) return <Error>Error: {error.message}</Error>;
+  if (!orders.length) return <Error>No Results...</Error>;
+
   return (
     <>
       <Table columns="1fr 1fr 1fr 1fr 1fr 0.5fr 1fr">
