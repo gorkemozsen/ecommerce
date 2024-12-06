@@ -1,26 +1,11 @@
 import styled from "styled-components";
 import { useState } from "react";
-
 import { formatDateToLocal } from "../../../hooks/formatDateToLocal";
 import { formatToTwoDecimal } from "../../../hooks/formattoTwoDecimal";
-
 import EditOrderForm from "./EditOrderForm";
 import Table from "../../../ui/Table";
 import Modal from "../../../ui/Modal/Modal";
 import Button from "../../../ui/Button";
-
-export const TableItem = styled.div`
-  && {
-    & span {
-      font-weight: 600;
-      display: none;
-
-      @media (max-width: 992px) {
-        display: block;
-      }
-    }
-  }
-`;
 
 const ChangeButton = styled(Button)`
   && {
@@ -35,32 +20,32 @@ function OrderRow({ order }) {
 
   return (
     <Table.Row>
-      <TableItem>
+      <Table.Item>
         <span>Order: </span> {id}
-      </TableItem>
-      <TableItem>
+      </Table.Item>
+      <Table.Item>
         <span>Items: </span>
         {items.map((item) => (
           <p key={item.productId}>{`${item?.productId} x ${item?.quantity}`}</p>
         ))}
-      </TableItem>
-      <TableItem>
+      </Table.Item>
+      <Table.Item>
         <span>Total: </span> $ {formatToTwoDecimal(total)}
-      </TableItem>
-      <TableItem>
+      </Table.Item>
+      <Table.Item>
         <span>Date: </span>
         {formatDateToLocal(date)}
-      </TableItem>
-      <TableItem>
+      </Table.Item>
+      <Table.Item>
         <span>Status: </span>
         {status}
-      </TableItem>
-      <TableItem>
+      </Table.Item>
+      <Table.Item>
         <span>Created By: </span>
         {createdBy}
-      </TableItem>
+      </Table.Item>
 
-      <TableItem>
+      <Table.Item>
         <Modal onIsModalOpen={setIsModalOpen}>
           <Modal.Open opens="order-edit">
             <ChangeButton onClick={() => setIsModalOpen(true)}>
@@ -71,7 +56,7 @@ function OrderRow({ order }) {
             <EditOrderForm orderToEdit={order} />
           </Modal.Window>
         </Modal>
-      </TableItem>
+      </Table.Item>
     </Table.Row>
   );
 }

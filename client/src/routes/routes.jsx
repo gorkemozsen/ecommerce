@@ -17,6 +17,7 @@ import UserOrders from "../features/account/UserOrders";
 import UserAddresses from "../features/account/UserAddresses";
 import AccountInfo from "../features/account/AccountInfo";
 import Checkout from "../pages/Checkout/Checkout";
+import Categories from "../features/dashboard/Categories/Categories";
 
 const protectedRoutes = [
   {
@@ -56,6 +57,10 @@ const adminRoutes = [
     path: "orders",
     element: <Orders />,
   },
+  {
+    path: "categories",
+    element: <Categories />,
+  },
 ];
 
 const publicRoutes = [
@@ -88,6 +93,11 @@ const router = createBrowserRouter([
 
       {
         index: true,
+        element: <Shop />,
+      },
+
+      {
+        path: "category/:categoryId",
         element: <Shop />,
       },
 

@@ -91,9 +91,11 @@ const Category = styled.span`
 `;
 
 function ProductCard({ product }) {
-  const { id, name, description, image, price, stock } = product;
+  const { id, name, description, image, price, stock, categories } = product;
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const displayCategory = categories[categories.length - 1]?.name;
 
   function handleAddToCart(e) {
     e.stopPropagation();
@@ -122,7 +124,7 @@ function ProductCard({ product }) {
       </ImgMask>
 
       <div className="caption">
-        <Category>{"Uncategorized"}</Category>
+        <Category>{displayCategory || "Uncategorized"}</Category>
         <Name onClick={() => navigate(`/products/${id}`)}>
           <h3>{name}</h3>
         </Name>

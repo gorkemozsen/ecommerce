@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
@@ -169,7 +169,17 @@ function ProductDetail() {
     dispatch(addItem({ product, quantity: currentQuantity }));
   }
 
-  const { name, image, id: productId, description, stock, price } = product;
+  const {
+    name,
+    image,
+    id: productId,
+    description,
+    stock,
+    price,
+    categories,
+  } = product;
+
+  const displayCategory = categories[categories.length - 1]?.name;
 
   return (
     <StyledProductDetail className="container mx-auto">
@@ -238,7 +248,10 @@ function ProductDetail() {
           <Seperator $bg="var(--color-grey)" />
 
           <p className="buy-box__footer">
-            Category: <span>Uncategorized</span>
+            Category:{" "}
+            <Link to={`/categories/${displayCategory.toLowerCase()}`}>
+              {displayCategory || "Uncategorized"}
+            </Link>
           </p>
         </div>
       </div>

@@ -11,6 +11,10 @@ import Input from "../../../ui/Input";
 import FormRow from "../../../ui/FormRow";
 import TextArea from "../../../ui/TextArea";
 import Form from "../../../ui/Form";
+import { useCategories } from "../Categories/useCategories";
+import Select from "../../../ui/Select";
+import Spinner from "../../../ui/Spinner";
+import Error from "../../../ui/Error";
 
 const Img = styled.img`
   && {
@@ -28,12 +32,21 @@ function CreateProductForm({ productToEdit = {}, onCloseModal }) {
 
   const [imageSrc, setImageSrc] = useState(productToEdit?.image || "");
 
-  const { id: editId, ...editValues } = productToEdit;
+  const { id: editId, categories, ...editValues } = productToEdit;
   const isEditSession = Boolean(editId);
 
   const { register, handleSubmit, setValue, reset, formState } = useForm({
-    defaultValues: isEditSession ? { ...editValues, image: imageSrc } : {},
+    defaultValues: isEditSession
+      ? {
+          ...editValues,
+          image: imageSrc,
+          category: categories[categories.length - 1]?.id || "",
+        }
+      : {},
   });
+
+  console.log(productToEdit);
+
   const { errors } = formState;
 
   function handleFileChange(e) {
@@ -49,7 +62,7 @@ function CreateProductForm({ productToEdit = {}, onCloseModal }) {
   }
 
   function onSubmit(data) {
-    const formData = { ...data, image: imageSrc };
+    const formData = { ...data, image: imageSrc, categoryId: data.category };
 
     if (isEditSession)
       editProduct(
@@ -69,6 +82,22 @@ function CreateProductForm({ productToEdit = {}, onCloseModal }) {
         },
       });
   }
+
+  const {
+    isPending: isCategoriesFetching,
+    categories: allCategories,
+    error: useCategoriesError,
+  } = useCategories();
+
+  if (useCategoriesError) return <Error>Error while fetching categories</Error>;
+  if (isCategoriesFetching)
+    return (
+      <Spinner.Container>
+        <Spinner />
+      </Spinner.Container>
+    );
+
+  console.log(allCategories);
 
   return (
     <Form onSubmit={handleSubmit(onSubmit, onSubmit)}>
@@ -122,6 +151,18 @@ function CreateProductForm({ productToEdit = {}, onCloseModal }) {
               message: "Stock should be at least 1",
             },
           })}
+        />
+      </FormRow>
+
+      <FormRow label="Category" error={errors?.category?.message}>
+        <Select
+          id="category"
+          disabled={isWorking}
+          register={register("category", { required: "Category is required." })}
+          options={allCategories.map((category) => ({
+            value: category.id,
+            label: category.name,
+          }))}
         />
       </FormRow>
 

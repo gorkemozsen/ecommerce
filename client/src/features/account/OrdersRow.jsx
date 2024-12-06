@@ -1,9 +1,6 @@
-import { useState } from "react";
-
 import { formatDateToLocal } from "../../hooks/formatDateToLocal";
 import { formatToTwoDecimal } from "../../hooks/formattoTwoDecimal";
 import { useCancelOrder } from "../order/useCancelOrder";
-import { TableItem } from "../dashboard/Orders/OrderRow";
 
 import Button from "../../ui/Button";
 import Modal from "../../ui/Modal/Modal";
@@ -17,28 +14,28 @@ function OrderRow({ order }) {
 
   return (
     <Table.Row>
-      <TableItem>
+      <Table.Item>
         <span>Order ID: </span>
         {id}
-      </TableItem>
-      <TableItem>
+      </Table.Item>
+      <Table.Item>
         <span>Items: </span>
         {items.map((item) => (
           <p key={item.productId}>{`${item.productId} X ${item.quantity}`}</p>
         ))}
-      </TableItem>
-      <TableItem>
+      </Table.Item>
+      <Table.Item>
         <span>Date: </span>
         {formatDateToLocal(date)}
-      </TableItem>
-      <TableItem>
+      </Table.Item>
+      <Table.Item>
         <span>Price:</span> ${formatToTwoDecimal(total)}
-      </TableItem>
-      <TableItem>
+      </Table.Item>
+      <Table.Item>
         <span>Status: </span>
         {status}
-      </TableItem>
-      <TableItem>
+      </Table.Item>
+      <Table.Item>
         {status !== "cancelled" && status === "pending" && (
           <Modal>
             <Modal.Open opens="product-edit">
@@ -57,7 +54,7 @@ function OrderRow({ order }) {
             </Modal.Window>
           </Modal>
         )}
-      </TableItem>
+      </Table.Item>
     </Table.Row>
   );
 }

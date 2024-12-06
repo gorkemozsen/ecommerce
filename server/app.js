@@ -9,6 +9,7 @@ const userRoutes = require("./routes/userRoutes");
 const productRoutes = require("./routes/productRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const addressRoutes = require("./routes/addressRoutes");
+const categoryRoutes = require("./routes/categoryRoutes");
 
 const db = require("./models");
 const uploadRoutes = require("./routes/uploadRoutes");
@@ -39,6 +40,7 @@ app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/addresses", addressRoutes);
+app.use("/api/categories", categoryRoutes);
 
 app.use(errorHandler);
 

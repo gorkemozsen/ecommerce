@@ -1,6 +1,7 @@
 import apiClient from "./apiClient";
 
 export async function createProduct(product) {
+  console.log("#####PRODUCT", product);
   const res = await apiClient.post("/products/add", product);
   return res.data;
 }

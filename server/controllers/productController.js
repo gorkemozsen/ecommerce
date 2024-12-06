@@ -1,43 +1,90 @@
 const { INTEGER } = require("sequelize");
-const { Products, Sequelize } = require("../models");
+const { Products, Categories, sequelize } = require("../models");
 const asyncHandler = require("../utilities/asyncHandler");
 const generateFilters = require("../utilities/filterUtil");
 const generateSearchConditions = require("../utilities/searchUtility");
 const calculatePagination = require("../utilities/paginationUtil");
 const generateOrder = require("../utilities/sortByUtil");
 
-exports.getAllProducts = async (req, res) => {
-  try {
-    const products = await Products.findAll();
-    res.json({ message: "Products succesfully loaded!", products });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
 exports.addProduct = asyncHandler(async (req, res) => {
-  const { name, description, image, price, stock } = req.body;
+  const { name, description, image, price, stock, categoryId } = req.body;
 
   const userId = req.user.id;
 
-  await Products.create({
-    name,
-    description,
-    image,
-    price,
-    stock,
-    createdBy: userId,
+  // Girdi doğrulama
+  if (!name || !price || !stock) {
+    return res
+      .status(400)
+      .json({ error: "Name, price, and stock are required." });
+  }
+
+  if (price <= 0) {
+    return res.status(400).json({ error: "Price must be greater than 0." });
+  }
+
+  if (stock < 0) {
+    return res.status(400).json({ error: "Stock cannot be negative." });
+  }
+
+  if (!categoryId) {
+    return res.status(400).json({ error: "Category ID is required." });
+  }
+
+  // Kategori kontrolü
+  const categories = [];
+  let currentCategory = await Categories.findByPk(categoryId);
+
+  if (!currentCategory) {
+    return res
+      .status(404)
+      .json({ error: `Category with ID ${categoryId} not found.` });
+  }
+
+  // Üst kategorileri zincirleme bulma
+  while (currentCategory) {
+    categories.push(currentCategory.id);
+    currentCategory = await Categories.findByPk(currentCategory.parentId);
+  }
+
+  // Transaction başlat ve tüm işlemleri kapsa
+  await sequelize.transaction(async (transaction) => {
+    // Ürünü oluştur
+    const product = await Products.create(
+      {
+        name,
+        description,
+        image,
+        price,
+        stock,
+        createdBy: userId,
+      },
+      { transaction }
+    );
+
+    // Ürünü tüm kategorilere bağla
+    await product.addCategories(categories, { transaction });
   });
 
-  res.json("Product succesfully registered");
+  res.status(201).json({ message: "Product successfully registered" });
 });
 
 exports.getProduct = asyncHandler(async (req, res) => {
   const { productId } = req.params;
 
-  const product = await Products.findByPk(productId);
+  // Ürünü ve sadece kategori adlarını çek
+  const product = await Products.findByPk(productId, {
+    include: [{ model: Categories, as: "categories", attributes: ["name"] }],
+    attributes: ["id", "name", "description", "image", "price", "stock"],
+  });
+
   if (product) {
-    res.json({ message: "Product successfully loaded!", product });
+    res.json({
+      message: "Product successfully loaded!",
+      product: {
+        ...product.toJSON(),
+        categories: product.categories.map((category) => category),
+      },
+    });
   } else {
     res.status(404).json({ message: "Product not found" });
   }
@@ -45,14 +92,40 @@ exports.getProduct = asyncHandler(async (req, res) => {
 
 exports.updateProduct = asyncHandler(async (req, res) => {
   const { productId } = req.params;
-  const { name, description, image, price, stock } = req.body;
+  const { name, description, image, price, stock, categoryId } = req.body;
 
-  const product = await Products.findByPk(productId);
+  // Ürünü bul
+  const product = await Products.findByPk(productId, {
+    include: [{ model: Categories, as: "categories" }],
+  });
 
   if (!product) {
-    return res.status(404).json({ message: "Product noht found" });
+    return res.status(404).json({ message: "Product not found" });
   }
 
+  // Girdi doğrulama
+  if (categoryId) {
+    // Kategori kontrolü
+    const categories = [];
+    let currentCategory = await Categories.findByPk(categoryId);
+
+    if (!currentCategory) {
+      return res
+        .status(404)
+        .json({ error: `Category with ID ${categoryId} not found.` });
+    }
+
+    // Üst kategorileri zincirleme bulma
+    while (currentCategory) {
+      categories.push(currentCategory.id);
+      currentCategory = await Categories.findByPk(currentCategory.parentId);
+    }
+
+    // Ürünün eski kategorilerini kaldır ve yeni kategorileri ekle
+    await product.setCategories(categories);
+  }
+
+  // Ürün bilgilerini güncelle
   Object.assign(product, {
     ...(name !== undefined && { name }),
     ...(description !== undefined && { description }),
@@ -63,7 +136,10 @@ exports.updateProduct = asyncHandler(async (req, res) => {
 
   await product.save();
 
-  res.json({ message: "Product successfully updated!", product });
+  res.json({
+    message: "Product successfully updated!",
+    product,
+  });
 });
 
 exports.deleteProduct = asyncHandler(async (req, res) => {
@@ -105,12 +181,23 @@ exports.getProducts = asyncHandler(async (req, res) => {
     limit: limitNum,
     offset,
     order,
+    distinct: true,
+    include: [
+      {
+        model: Categories,
+        as: "categories",
+        attributes: ["id", "name"],
+      },
+    ],
   });
 
   res.json({
     totalItems: products.count,
     totalPages: Math.ceil(products.count / limitNum),
     currentPage: pageNum,
-    data: products.rows,
+    data: products.rows.map((product) => ({
+      ...product.toJSON(),
+      categories: product?.categories,
+    })),
   });
 });

@@ -1,10 +1,8 @@
 import { useProducts } from "./useProducts";
-
 import ProductCard from "../../ui/ProductCard";
 import ProductList from "../../ui/ProductList";
 import Pagination from "../../ui/Pagination";
 import Spinner from "../../ui/Spinner";
-import ProductTableOperations from "./ProductTableOperations";
 import Error from "../../ui/Error";
 
 function Products() {

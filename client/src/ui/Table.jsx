@@ -68,6 +68,19 @@ const Empty = styled.p`
   }
 `;
 
+const Item = styled.div`
+  && {
+    & span {
+      font-weight: 600;
+      display: none;
+
+      @media (max-width: 992px) {
+        display: block;
+      }
+    }
+  }
+`;
+
 const TableContext = createContext();
 
 function Table({ props, columns, children }) {
@@ -110,5 +123,6 @@ Table.Header = Header;
 Table.Body = Body;
 Table.Row = Row;
 Table.Footer = Footer;
+Table.Item = Item;
 
 export default Table;

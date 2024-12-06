@@ -96,7 +96,6 @@ function Menus({ children, onIsMenuOpen, isMenuOpen, isModalOpen }) {
     <>
       <RowButton ref={menuEl} onClick={handleClick}>
         <SlOptionsVertical className="d-none d-lg-block" />
-        <span>Actions</span>
       </RowButton>
       <StyledMenus>
         <List

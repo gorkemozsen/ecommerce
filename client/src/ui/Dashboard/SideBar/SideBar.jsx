@@ -6,7 +6,7 @@ import Logo from "../../Logo/Logo";
 import { AiOutlineProduct, AiOutlineShop } from "react-icons/ai";
 import styled from "styled-components";
 import Link from "../../Link";
-import { MdOutlineDashboard } from "react-icons/md";
+import { MdOutlineCategory, MdOutlineDashboard } from "react-icons/md";
 
 const MenuIcon = styled.div`
   && {
@@ -77,6 +77,13 @@ function SideBar({ onMenuOpen, menuOpen }) {
             <AiOutlineShop />
           </MenuIcon>
           <span>Orders</span>
+        </MenuLink>
+
+        <MenuLink to="categories">
+          <MenuIcon>
+            <MdOutlineCategory />
+          </MenuIcon>
+          <span>Categories</span>
         </MenuLink>
       </div>
     </StyledSideBar>

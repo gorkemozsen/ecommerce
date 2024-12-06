@@ -4,8 +4,6 @@ import styled from "styled-components";
 import { useCreateProduct } from "./useCreateProduct";
 import { useDeleteProduct } from "./useDeleteProduct";
 import { formatToTwoDecimal } from "../../../hooks/formattoTwoDecimal";
-
-import { TableItem } from "../Orders/OrderRow";
 import Table from "../../../ui/Table";
 import Modal from "../../../ui/Modal/Modal";
 import Button from "../../../ui/Button";
@@ -21,7 +19,7 @@ const Img = styled.img`
   }
 `;
 
-const Actions = styled(TableItem)`
+const Actions = styled(Table.Item)`
   && {
     display: flex;
     align-items: center;
@@ -54,17 +52,17 @@ function ProductRow({ product }) {
   return (
     <Table.Row>
       <Img src={image} />
-      <TableItem>
+      <Table.Item>
         <span>Name: </span>
         {name}
-      </TableItem>
-      <TableItem>
+      </Table.Item>
+      <Table.Item>
         <span>Price: </span>$ {formatToTwoDecimal(price)}
-      </TableItem>
-      <TableItem>
+      </Table.Item>
+      <Table.Item>
         <span>Stock: </span>
         {stock}
-      </TableItem>
+      </Table.Item>
       <div></div>
 
       <Actions>
@@ -106,7 +104,7 @@ function ProductRow({ product }) {
                 operation="Delete"
                 title={`Delete ${product?.name}`}
                 description={`Are you sure want to Delete ${product?.name} ?`}
-                onConfirm={() => handleDelete(product?.id)}
+                onConfirm={handleDelete}
                 disabled={isWorking}
               />
             </Modal.Window>
