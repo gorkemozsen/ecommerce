@@ -13,8 +13,6 @@ const generateFilters = (filter) => {
     like: Op.like, // Benzeyen
   };
 
-  console.log(filter, "");
-  // Operatör kontrolü
   const operator = operators[filter.operator] || Op.eq; // Varsayılan: eşittir
 
   if (filter.field === "stock") {

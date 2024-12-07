@@ -8,7 +8,6 @@ export function useUserAddress() {
     queryFn: getMyAddresses,
     onSuccess: (data) => {
       toast.success("Addresses fetched successfully!");
-      console.log("Fetched addresses:", data);
     },
 
     onError: (error) => {

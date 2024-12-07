@@ -45,8 +45,6 @@ function CreateProductForm({ productToEdit = {}, onCloseModal }) {
       : {},
   });
 
-  console.log(productToEdit);
-
   const { errors } = formState;
 
   function handleFileChange(e) {
@@ -96,8 +94,6 @@ function CreateProductForm({ productToEdit = {}, onCloseModal }) {
         <Spinner />
       </Spinner.Container>
     );
-
-  console.log(allCategories);
 
   return (
     <Form onSubmit={handleSubmit(onSubmit, onSubmit)}>

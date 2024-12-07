@@ -4,7 +4,6 @@ import ProductTableOperations from "../../shop/ProductTableOperations";
 import AddProduct from "./AddProduct";
 import DashboardWrapper from "../../../ui/DashboardWrapper";
 import SearchBar from "../../../ui/SearchBar";
-import AddCategory from "./AddCategory";
 
 function Products() {
   return (
@@ -19,7 +18,6 @@ function Products() {
           <SearchBar forWhat={"products"} />
 
           <AddProduct />
-          <AddCategory />
         </div>
       </div>
       <ProductTableOperations />

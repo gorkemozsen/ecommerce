@@ -6,6 +6,13 @@ import CartRow from "./CartRow";
 
 const StyledCartTable = styled.div`
   && {
+    overflow-y: scroll;
+    max-height: 500px;
+
+    ::-webkit-scrollbar-track {
+      background: red;
+      color: red;
+    }
   }
 `;
 

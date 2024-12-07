@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
-const StyledLogin = styled.div`
+const StyledLogin = styled.section`
   && {
     background-color: var(--color-white);
+    flex-grow: 1;
   }
 `;
 

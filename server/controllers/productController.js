@@ -1,5 +1,4 @@
-const { INTEGER } = require("sequelize");
-const { Products, Categories, sequelize } = require("../models");
+const { Products, Categories, sequelize, Sequelize } = require("../models");
 const asyncHandler = require("../utilities/asyncHandler");
 const generateFilters = require("../utilities/filterUtil");
 const generateSearchConditions = require("../utilities/searchUtility");
@@ -73,8 +72,29 @@ exports.getProduct = asyncHandler(async (req, res) => {
 
   // Ürünü ve sadece kategori adlarını çek
   const product = await Products.findByPk(productId, {
+    attributes: {
+      include: [
+        // Yorum sayısını hesaplayan alt sorgu
+        [
+          Sequelize.literal(`(
+          SELECT COUNT(*)
+          FROM comments AS Comment
+          WHERE Comment.productId = Products.id
+        )`),
+          "commentCount",
+        ],
+        // Ortalama puanı hesaplayan alt sorgu
+        [
+          Sequelize.literal(`(
+          SELECT AVG(Comment.rating)
+          FROM comments AS Comment
+          WHERE Comment.productId = Products.id
+        )`),
+          "averageRating",
+        ],
+      ],
+    },
     include: [{ model: Categories, as: "categories", attributes: ["name"] }],
-    attributes: ["id", "name", "description", "image", "price", "stock"],
   });
 
   if (product) {
@@ -182,6 +202,28 @@ exports.getProducts = asyncHandler(async (req, res) => {
     offset,
     order,
     distinct: true,
+    attributes: {
+      include: [
+        // Yorum sayısını hesaplayan alt sorgu
+        [
+          Sequelize.literal(`(
+            SELECT COUNT(*)
+            FROM comments AS Comment
+            WHERE Comment.productId = Products.id
+          )`),
+          "commentCount",
+        ],
+        // Ortalama puanı hesaplayan alt sorgu
+        [
+          Sequelize.literal(`(
+            SELECT AVG(Comment.rating)
+            FROM comments AS Comment
+            WHERE Comment.productId = Products.id
+          )`),
+          "averageRating",
+        ],
+      ],
+    },
     include: [
       {
         model: Categories,

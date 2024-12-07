@@ -1,20 +1,20 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { getAllComments } from "../../services/apiComments";
 import { useQueryParams } from "../../hooks/useQueryParams";
-import { getProductsByCategory } from "../../services/apiShop";
 import { prefetchPage } from "../../hooks/prefetchPage";
 
-export function useProductsByCategory(categoryId) {
+export function useComments() {
   const queryClient = useQueryClient();
 
-  const { filter, sortBy, page, limit, query } = useQueryParams("stock");
+  const { filter, sortBy, page, limit, query } = useQueryParams();
 
   const { isPending, data, error } = useQuery({
-    queryKey: ["products", page, filter, sortBy, query],
-    queryFn: () =>
-      getProductsByCategory({ page, limit, filter, sortBy, query, categoryId }),
+    queryKey: ["comments", page, filter, sortBy, query],
+    queryFn: () => getAllComments({ page, limit, filter, sortBy, query }),
     keepPreviousData: true,
   });
 
+  // Pre-fetching
   if (data?.totalPages)
     prefetchPage({
       queryClient,
@@ -24,14 +24,14 @@ export function useProductsByCategory(categoryId) {
       sortBy,
       query,
       totalPages: data?.totalPages,
-      getPagesFn: getProductsByCategory,
-      queryKeyStr: "products",
+      getPagesFn: getAllComments,
+      queryKeyStr: "comments",
     });
 
   return {
     isPending,
     error,
-    products: data?.products,
+    comments: data?.data,
     numResults: data?.totalItems,
     numPages: data?.totalPages,
     currentPage: data?.currentPage,

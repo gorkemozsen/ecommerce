@@ -8,7 +8,6 @@ export function useUpdateCategory() {
   const { mutate, isPending, error } = useMutation({
     mutationFn: ({ categoryId, updatedCategory }) => {
       updateCategory(categoryId, updatedCategory);
-      console.log(categoryId, updatedCategory);
     },
     onSuccess: () => {
       // Refetch categories after updating

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledShop = styled.main`
+const StyledShop = styled.section`
   && {
     background-color: var(--color-white);
     padding: 1rem;

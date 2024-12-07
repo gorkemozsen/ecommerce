@@ -19,9 +19,7 @@ module.exports = async (req, res, next) => {
 
     const decoded = jwt.verify(token, jwtSecret);
 
-    console.log("Decoded User ID:", decoded.userId); // Log the decoded userId
     const user = await User.findByPk(decoded.userId);
-    console.log("Fetched User:", user); // Log the user object
 
     if (!user) {
       return res.status(404).json({ message: "User not found." });

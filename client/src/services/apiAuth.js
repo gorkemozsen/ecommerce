@@ -1,7 +1,6 @@
 import apiClient from "./apiClient";
 
 export async function signup({ email, password, firstName, lastName }) {
-  console.log(firstName, lastName);
   const res = await apiClient.post("/auth/register", {
     email,
     password,
@@ -9,7 +8,6 @@ export async function signup({ email, password, firstName, lastName }) {
     lastName,
   });
 
-  console.log("Successfully registered!", res.data);
   return res.data;
 }
 
@@ -23,7 +21,6 @@ export async function signin({ email, password }) {
 
   localStorage.setItem("accessToken", token);
 
-  console.log(res.data);
   return res.data;
 }
 

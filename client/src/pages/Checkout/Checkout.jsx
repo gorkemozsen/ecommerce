@@ -2,7 +2,7 @@ import SelectAddress from "../../features/checkout/SelectAddress";
 
 import styled from "styled-components";
 
-const StyledCheckout = styled.div`
+const StyledCheckout = styled.section`
   && {
     background-color: var(--color-white);
     padding: 0 6rem;

@@ -11,7 +11,6 @@ export function useSignIn() {
   const { mutate: signin, isPending } = useMutation({
     mutationFn: ({ email, password }) => signinApi({ email, password }),
     onSuccess: (data) => {
-      console.log("successfully signed in", data);
       toast.success("You're successfully signed in!");
       queryClient.invalidateQueries(["user"]);
       navigate("/");

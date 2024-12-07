@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledAccount = styled.main`
+const StyledAccount = styled.section`
   && {
     padding: 0 4rem;
     flex-grow: 1;

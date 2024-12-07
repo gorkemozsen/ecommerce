@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
 
     items: {
       type: DataTypes.JSON, // {productId: 321321, quantity: 2}
-      allowNull: false,
+      allowNull: true,
     },
   });
 

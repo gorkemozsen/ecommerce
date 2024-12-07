@@ -23,7 +23,7 @@ export function useQueryParams(param) {
   // Pagination
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
   const limit = !searchParams.get("limit")
-    ? 10
+    ? 9
     : Number(searchParams.get("limit"));
 
   return { filter, sortBy, query, page, limit };

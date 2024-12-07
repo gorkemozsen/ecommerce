@@ -23,7 +23,6 @@ const cartSlice = createSlice({
       const { product, quantity } = action.payload;
 
       try {
-        console.log("Adding item:", product, "Quantity:", quantity);
         state.items = addOrUpdateCartItem(state.items, product, quantity);
         state.totalPrice = calculateTotalPrice(state.items);
 

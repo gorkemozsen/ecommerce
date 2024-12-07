@@ -11,7 +11,6 @@ export function useLogout() {
   const { mutate: logout, isPending } = useMutation({
     mutationFn: logoutApi,
     onSuccess: () => {
-      console.log("successfully logged out");
       navigate("/");
       queryClient.clear();
       toast.success("You're successfully logged out.");

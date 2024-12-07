@@ -1,5 +1,3 @@
-const { DataTypes } = require("sequelize");
-
 module.exports = (sequelize, DataTypes) => {
   const Product = sequelize.define("Products", {
     name: {
@@ -47,6 +45,12 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "productId",
       otherKey: "categoryId",
       as: "categories",
+    });
+
+    Product.hasMany(models.Comment, {
+      foreignKey: "productId",
+      as: "comments",
+      onDelete: "CASCADE",
     });
   };
 

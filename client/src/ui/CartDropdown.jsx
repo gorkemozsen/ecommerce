@@ -21,6 +21,21 @@ const StyledCartDropdown = styled.div`
       padding: 2rem;
       width: 300px;
       box-shadow: 0px 0px 16px 4px #0000000d;
+
+      & .items {
+        overflow-y: scroll;
+        max-height: 300px;
+
+        &::-webkit-scrollbar {
+          background: var(--color-white-bg);
+          border-radius: 10px;
+          width: 4px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: var(--color-secondary);
+          border-radius: 10px;
+        }
+      }
     }
 
     &::before {
@@ -82,15 +97,17 @@ function CartDropdown({ onIsCartOpen, isCartOpen }) {
           </p>
         </Header>
 
-        {cart.items.length === 0 && (
-          <Error>
-            <p>No items in your cart...</p>
-          </Error>
-        )}
+        <div className="items">
+          {cart.items.length === 0 && (
+            <Error>
+              <p>No items in your cart...</p>
+            </Error>
+          )}
 
-        {cart?.items.map((item) => (
-          <CartItem key={item.id} item={item} />
-        ))}
+          {cart?.items.map((item) => (
+            <CartItem key={item.id} item={item} />
+          ))}
+        </div>
 
         <Seperator $bg="var(--color-white-600)" />
 

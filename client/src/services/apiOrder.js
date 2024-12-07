@@ -51,13 +51,11 @@ export async function createOrder(cart) {
     addressId: cart?.addressId,
   });
 
-  console.log("Succesfully created!", res.data);
   return res.data;
 }
 
 export async function cancelOrder(orderId) {
   const res = await apiClient.put(`/user/orders/${orderId}`, {});
 
-  console.log("Succesfully cancelled!", res.data);
   return res.data;
 }

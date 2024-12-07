@@ -55,12 +55,9 @@ exports.getOrders = asyncHandler(async (req, res) => {
 
   // Pagination hesaplamaları
   const { pageNum, limitNum, offset } = calculatePagination(page, limit);
-  console.log("#$@#@$@#$@#$@DEDASDASDAS", pageNum, limitNum, offset);
 
   // Sıralama ayarları
   const order = generateOrder(sortBy);
-
-  console.log(filter, "$@#$@#$@#FILTEEER");
 
   // Filtre ekleme ve arama (filter[field] ve filter[value])
   const where = {
@@ -136,8 +133,6 @@ exports.updateOrder = asyncHandler(async (req, res) => {
   const { orderId } = req.params;
   const { status, total } = req.body;
 
-  console.log("BODY####", req.body);
-
   // Order'ı veritabanından al
   const order = await Order.findByPk(orderId);
 
@@ -150,10 +145,8 @@ exports.updateOrder = asyncHandler(async (req, res) => {
 
   // Order'daki items'ı JSON olarak çözümle
   const items = order.items || "[]"; // items JSON formatında bekleniyor
-  console.log("Parsed Items ####", items);
 
   // Sipariş durumu "cancelled" ise stokları güncelle
-  console.log("Status ########", status, previousStatus);
   if (
     status.toLowerCase() === "cancelled" &&
     previousStatus.toLowerCase() !== "cancelled"
@@ -211,7 +204,6 @@ exports.cancelOrder = asyncHandler(async (req, res) => {
 
   // Order'daki items'ı JSON olarak çözümle
   const items = order.items || "[]";
-  console.log("Parsed Items ####", items);
 
   // Stokları güncelle
   await updateStock(items, "increment");

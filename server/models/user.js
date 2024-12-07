@@ -56,6 +56,12 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "SET NULL",
     });
 
+    User.hasMany(models.Comment, {
+      foreignKey: "userId",
+      as: "comments",
+      onDelete: "CASCADE",
+    });
+
     User.hasMany(models.Address, {
       foreignKey: "userId",
       as: "addresses",

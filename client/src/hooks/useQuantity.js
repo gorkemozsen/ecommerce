@@ -16,7 +16,6 @@ export function useQuantity(
       const itemQuantity = item?.quantity || 0;
       if (newQuantity >= 1 && newQuantity <= item.stock) {
         setCurrentQuantity(newQuantity);
-        console.log(newQuantity);
         dispatch(
           addItem({ product: item, quantity: newQuantity - itemQuantity })
         );

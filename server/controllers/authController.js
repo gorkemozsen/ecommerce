@@ -5,6 +5,7 @@ const { User } = require("../models");
 const asyncHandler = require("../utilities/asyncHandler");
 
 const jwtSecret = process.env.JWT_SECRET;
+const expiresIn = process.env.JWT_EXPIRES_IN;
 
 exports.register = asyncHandler(async (req, res) => {
   const { email, password, firstName, lastName } = req.body;
@@ -36,6 +37,7 @@ exports.login = asyncHandler(async (req, res) => {
   if (!user) return res.status(404).json({ message: "User not found" });
 
   const isMatched = await bcrypt.compare(password, user.password);
+  //const isMatched = user.password === password;
   if (!isMatched)
     return res.status(400).json({ message: "Incorrect password" });
 
@@ -50,7 +52,7 @@ exports.login = asyncHandler(async (req, res) => {
     },
     jwtSecret,
     {
-      expiresIn: "1h",
+      expiresIn: expiresIn,
     }
   );
 
@@ -77,7 +79,6 @@ exports.logout = asyncHandler(async (req, res) => {
       .json({ error: "Token is missing in the authorization header" });
   }
 
-  console.log("Logging out user with token:", token);
   res.json({ message: "Logged out successfully" });
 });
 
@@ -85,11 +86,8 @@ exports.getUser = asyncHandler(async (req, res) => {
   const user = await User.findByPk(req.user.id);
 
   if (!user) {
-    console.log("User nof found...");
-
     return res.status(404).json({ message: "User not found" });
   }
-  console.log("Kullanıcı bilgisi:", user);
 
   res.json(user);
 });
@@ -142,6 +140,8 @@ exports.updatePassword = asyncHandler(async (req, res) => {
   }
 
   const isPasswordValid = await bcrypt.compare(currentPassword, user.password);
+  //const isPasswordValid = currentPassword === user.password;
+
   if (!isPasswordValid) {
     return res.status(401).json({ message: "Incorrect current password." });
   }

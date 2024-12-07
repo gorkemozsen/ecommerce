@@ -249,7 +249,7 @@ function ProductDetail() {
 
           <p className="buy-box__footer">
             Category:{" "}
-            <Link to={`/categories/${displayCategory.toLowerCase()}`}>
+            <Link to={`/categories/${displayCategory?.toLowerCase()}`}>
               {displayCategory || "Uncategorized"}
             </Link>
           </p>

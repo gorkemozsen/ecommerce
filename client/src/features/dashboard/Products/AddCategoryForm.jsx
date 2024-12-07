@@ -60,8 +60,6 @@ function AddCategoryForm({ categoryToEdit = {}, onCloseModal }) {
   function onSubmit(data) {
     const formData = { name: data.categoryName, parentId: data.parentCategory };
 
-    console.log(formData);
-
     if (isEditSession)
       updateCategory(
         { categoryId: editId, updatedCategory: formData },

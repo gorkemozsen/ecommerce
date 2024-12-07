@@ -202,7 +202,6 @@ exports.getCities = async (req, res) => {
     const response = await addressApiClient.get("/iller");
     res.json(response.data);
   } catch (err) {
-    console.error("Error fetching cities:", err.message);
     res.status(500).json({ error: "Failed to fetch cities" });
   }
 };
@@ -215,7 +214,6 @@ exports.getDistricts = async (req, res) => {
     });
     res.json(response.data);
   } catch (err) {
-    console.error("Error fetching districts:", err.message);
     res.status(500).json({ error: "Failed to fetch districts" });
   }
 };
@@ -224,14 +222,11 @@ exports.getNeighborhoods = async (req, res) => {
   const city = req.params.cityName;
   const district = req.params.districtName;
   try {
-    console.log(`City Name = ${city}, District Name = ${district}`);
     const response = await addressApiClient.get(`/mahalleler`, {
       params: { iladi: city, ilce: district },
     });
-    console.log(response.data);
     res.json(response.data);
   } catch (err) {
-    console.error("Error fetching neighborhoods:", err.message);
     res.status(500).json({ error: "Failed to fetch neighborhoods" });
   }
 };
@@ -240,15 +235,12 @@ exports.getStreets = async (req, res) => {
   const city = req.params.cityName;
   const neighborhood = req.params.neighborhoodName;
 
-  console.log(`sehir ${city}, mahalle ${neighborhood}`);
   try {
     const response = await addressApiClient.get(`/sokaklar`, {
       params: { iladi: city, mahalle: neighborhood },
     });
-    console.log(response.data);
     res.json(response.data);
   } catch (err) {
-    console.error("Error fetching streets:", err.message);
     res.status(500).json({ error: "Failed to fetch streets" });
   }
 };

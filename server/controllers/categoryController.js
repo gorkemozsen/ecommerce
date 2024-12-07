@@ -10,9 +10,39 @@ exports.getAllCategories = asyncHandler(async (req, res) => {
   //   include: [{ model: Categories, as: "subcategories" }], // Alt kategoriler dahil
   // });
 
-  const categories = await Categories.findAll();
+  const {
+    page = 1,
+    limit = 10,
+    filter = {},
+    sortBy = {},
+    query = "",
+    searchFields = ["name", "id", "parentId"],
+    searchOperator = "like",
+  } = req.query;
 
-  res.status(200).json(categories);
+  const { pageNum, limitNum, offset } = calculatePagination(page, limit);
+
+  const order = generateOrder(sortBy);
+
+  const where = {
+    ...generateFilters(filter),
+    ...generateSearchConditions(query, searchFields, searchOperator),
+  };
+
+  const categories = await Categories.findAndCountAll({
+    where,
+    limit: limitNum,
+    offset,
+    order,
+    distinct: true,
+  });
+
+  res.status(200).json({
+    totalItems: categories.count,
+    totalPages: Math.ceil(categories.count / limitNum),
+    currentPage: pageNum,
+    data: categories,
+  });
 });
 exports.addCategory = asyncHandler(async (req, res) => {
   const { name, parentId } = req.body;

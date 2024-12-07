@@ -8,6 +8,9 @@ import { addAddressId } from "../cart/cartSlice";
 import Spinner from "../../ui/Spinner";
 import CartTotal from "../cart/CartTotal";
 import Error from "../../ui/Error";
+import Modal from "../../ui/Modal/Modal";
+import Button from "../../ui/Button";
+import AddressForm from "../account/AddressForm";
 
 const StyledSelectAddress = styled.div`
   && {
@@ -70,7 +73,6 @@ function SelectAddress() {
 
   useEffect(() => {
     dispatch(addAddressId(selectedAddress));
-    console.log(cart);
   }, [selectedAddress, dispatch, cart]);
 
   if (isLoadingAddress) {
@@ -81,16 +83,26 @@ function SelectAddress() {
     );
   }
 
-  if (error) {
-    return <Error>An error occurred while fetching addresses.</Error>;
-  }
-
   return (
     <StyledSelectAddress className="row justify-content-center justify-content-lg-between">
       <div className="col-lg-6 col-12">
         <h1>Delivery Address</h1>
+
+        {!addressList && (
+          <>
+            <p className="mb-5">You have no registered address.</p>
+            <Modal>
+              <Modal.Open opens="address-edit">
+                <Button>Add new Address</Button>
+              </Modal.Open>
+              <Modal.Window name="address-edit">
+                <AddressForm />
+              </Modal.Window>
+            </Modal>
+          </>
+        )}
         <List className="justify-content-center justify-content-lg-between">
-          {addressList.map((address) => (
+          {addressList?.map((address) => (
             <Item
               onClick={() =>
                 setSelectedAddress((prev) =>

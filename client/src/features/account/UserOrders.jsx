@@ -1,3 +1,4 @@
+import { useSearchParams } from "react-router-dom";
 import Error from "../../ui/Error";
 import Pagination from "../../ui/Pagination";
 import Spinner from "../../ui/Spinner";
@@ -9,6 +10,9 @@ import OrderRow from "./OrdersRow";
 function UserOrders() {
   const { orders, isPending, error, numPages, numResults, currentPage } =
     useUserOrders();
+
+  const [searchParams] = useSearchParams();
+  const status = searchParams.get("status")?.slice(1) || "";
 
   if (isPending)
     return (
@@ -31,6 +35,8 @@ function UserOrders() {
           <div>Status</div>
           <div>Actions</div>
         </Table.Header>
+
+        {numResults === 0 && <Error>{`You have no ${status} orders...`}</Error>}
 
         <Table.Body
           data={orders}

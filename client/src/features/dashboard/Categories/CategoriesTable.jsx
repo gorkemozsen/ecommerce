@@ -1,11 +1,13 @@
 import Error from "../../../ui/Error";
+import Pagination from "../../../ui/Pagination";
 import Spinner from "../../../ui/Spinner";
 import Table from "../../../ui/Table";
 import CategoryRow from "./CategoryRow";
 import { useCategories } from "./useCategories";
 
 function CategoriesTable() {
-  const { isPending, categories, error } = useCategories();
+  const { isPending, categories, error, numResults, numPages, currentPage } =
+    useCategories();
 
   if (isPending)
     return (
@@ -16,8 +18,6 @@ function CategoriesTable() {
 
   if (error) return <Error>Error: {error.message}</Error>;
   if (!categories.length) return <Error>No Results...</Error>;
-
-  console.log(categories);
 
   return (
     <>
@@ -36,6 +36,12 @@ function CategoriesTable() {
           )}
         />
       </Table>
+
+      <Pagination
+        numResults={numResults}
+        numPages={numPages}
+        currentPage={currentPage}
+      />
     </>
   );
 }
